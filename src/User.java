@@ -8,6 +8,6 @@ public class User {
     }
 
     public boolean equals(User otherUser) {
-        return false;
+        return this.username.equals(otherUser.username) && this.password.equals(otherUser.password);
     }
 }

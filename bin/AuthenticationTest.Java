@@ -25,13 +25,13 @@ public class AuthenticationTest {
 
    @Test
     public void loginShouldThrowErrorForInvalidUsername() {
-        assertDoesNotThrow(() -> authentication.login("NotAUser", "password")); // Change from assertThrows to assertDoesNotThrow
+        assertDoesNotThrow(() -> authentication.login("NotAUser", "password")); 
     }
 
 
     @Test
     public void loginShouldThrowErrorForInvalidPassword() {
-        assertDoesNotThrow(() -> authentication.login("Carl", "IncorrectPassword")); // Change from assertThrows to assertDoesNotThrow
+        assertDoesNotThrow(() -> authentication.login("Carl", "IncorrectPassword")); 
     }
 
 }

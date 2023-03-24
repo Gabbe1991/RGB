@@ -20,18 +20,18 @@ public class AuthenticationTest {
 
     @Test
     public void loginShouldReturnTrueForValidUsernamePasswordPair() {
-        assertFalse(authentication.login("Carl", "carl123"));
+        assertTrue(authentication.login("Carl", "carl123"));
     }
 
    @Test
     public void loginShouldThrowErrorForInvalidUsername() {
-        assertDoesNotThrow(() -> authentication.login("NotAUser", "password")); 
+        assertThrows(IllegalArgumentException.class,() -> authentication.login("NotAUser", "password")); 
     }
 
 
     @Test
     public void loginShouldThrowErrorForInvalidPassword() {
-        assertDoesNotThrow(() -> authentication.login("Carl", "IncorrectPassword")); 
+        assertThrows(IllegalArgumentException.class,() -> authentication.login("Carl", "IncorrectPassword")); 
     }
 
 }

@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Optional;
 
 public class Authentication {
     private List<User> database;
@@ -8,20 +9,15 @@ public class Authentication {
     }
 
     public boolean login(String username, String password) {
-        User userInDatabase = null;
+        Optional<User> userInDatabase = database.stream()
+                .filter(user -> user.getUsername().equals(username))
+                .findFirst();
 
-        for (User user : database) {
-            if (user.getUsername().equals(username)) {
-                userInDatabase = user;
-                break;
-            }
-        }
-
-        if (userInDatabase == null) {
+        if (!userInDatabase.isPresent()) {
             throw new IllegalArgumentException("User does not exist");
         }
 
-        if (!userInDatabase.getPassword().equals(password)) {
+        if (!userInDatabase.get().getPassword().equals(password)) {
             throw new IllegalArgumentException("Invalid password");
         }
 
